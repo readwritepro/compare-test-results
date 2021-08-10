@@ -6,7 +6,7 @@ import (
 	"os"
 	"testing"
 
-	"github.com/joehonton/compare-files"
+	"github.com/readwritepro/compare-test-results"
 )
 
 func ExampleExpectedActual() {

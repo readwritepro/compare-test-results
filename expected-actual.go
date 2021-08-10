@@ -2,9 +2,9 @@
 // File:     expected-actual.go
 //=============================================================================
 
-// Package compare-files uses Google's classic diff-match-patch algorithm to compare two files.
-// It sends the color highlighted output to *testing.T for use when testing expected
-// versus actual results.
+// Package compare-test-results uses Google's classic diff-match-patch algorithm
+// to compare two files. It sends the color highlighted output to *testing.T.
+// Use this package to automatically display file-based diffs from within "go test".
 package compare
 
 import (
@@ -15,7 +15,10 @@ import (
 	"github.com/sergi/go-diff/diffmatchpatch"
 )
 
-// Test utility function
+// The ExpectedActual function compares two files formatting them with red and green
+// highlights to show subtractions and additions. The output is sent to *testing.T
+// which will cause the calling test to FAIL when there is a difference and to PASS
+// when they are the same.
 func ExpectedActual(t *testing.T, expectedFile string, actualFile string) {
 	expectedBytes, _ := ioutil.ReadFile(expectedFile)
 	actualBytes, _ := ioutil.ReadFile(actualFile)
